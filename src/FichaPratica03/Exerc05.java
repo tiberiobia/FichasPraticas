@@ -7,8 +7,10 @@ public class Exerc05 {
         String texto;
         System.out.print("Digite um numero:" );
         num= input.nextInt();
+        texto= input.nextLine();
+
         System.out.print("Digite o texto; ");
-        texto= input.next();
+        texto= input.nextLine();
         for (int i=1;i<=num;i++){
             System.out.println(texto);
         }
