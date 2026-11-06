@@ -15,6 +15,7 @@ public class Exerc07 {
         for (int i = 0; i < numeros.length; i++) {
             System.out.print("Introduza o elemento " + (i + 1) + ": ");
             numeros[i] = input.nextInt();
+
             if(numeros[i]%2==0){
                 if (!existePar || numeros[i] > maiorPar) {
                     maiorPar = numeros[i];
