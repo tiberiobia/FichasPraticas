@@ -22,7 +22,7 @@ public class Exerc12 {
         }
         for (int i=0; i<array1.length;i++){
             for(int j=0;j<array2.length;j++){
-                
+
 
             }
         }
