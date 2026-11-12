@@ -22,58 +22,127 @@ import java.util.Scanner;
 //i. Dado um número de matrícula, permita editar as informações do formando.
 //        e. Eliminar Formando
 //i. Dado um número de matrícula, permita eliminar as informações do formando.
+
+
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+
 public class Exerc10 {
+
     public static void main(String[] args) {
+
         File ficheiro = new File("Files/exercicio_10.csv");
 
-        int totallinhas = 0;
+        Scanner input = new Scanner(System.in);
 
         try {
-            Scanner leitor = new Scanner(ficheiro);
 
-            leitor.nextLine(); // Ignorar cabeçalho
+            int opcao = -1;
 
-            while (leitor.hasNextLine()) {
-                String linha = leitor.nextLine().trim();
+            do {
 
-                if (!linha.isEmpty()) {
-                    totallinhas++;
-                }
-            }
+                // Contar linhas do ficheiro
+                int totallinhas = 0;
 
-            leitor.close();
+                Scanner leitor = new Scanner(ficheiro);
 
-            // Criar matriz
-            String[][] matriz = new String[totallinhas][5];
+                leitor.nextLine(); // Ignorar cabeçalho
 
-            Scanner sc = new Scanner(ficheiro);
+                while (leitor.hasNextLine()) {
 
-            sc.nextLine(); // Ignorar cabeçalho
+                    String linha = leitor.nextLine().trim();
 
-            int linhaMatriz = 0;
-
-            while (sc.hasNextLine()) {
-
-                String linha = sc.nextLine().trim();
-
-                if (!linha.isEmpty()) {
-
-                    String[] info = linha.split(",");
-
-                    for (int i = 0; i < 4; i++) {
-                        matriz[linhaMatriz][i] =
-                                info[i].trim().toLowerCase();
+                    if (!linha.isEmpty()) {
+                        totallinhas++;
                     }
-                    linhaMatriz++;
                 }
-            }
+
+                leitor.close();
 
 
-            sc.close();
+                String[][] matriz = new String[totallinhas][5];
 
-            Scanner input = new Scanner(System.in);
+                Scanner sc = new Scanner(ficheiro);
+
+                sc.nextLine();
+
+                int linhaMatriz = 0;
+
+                while (sc.hasNextLine()) {
+
+                    String linha = sc.nextLine().trim();
+
+                    if (!linha.isEmpty()) {
+
+                        String[] info = linha.split(",", -1);
+
+                        for (int i = 0; i < 5; i++) {
+                            matriz[linhaMatriz][i] = info[i].trim();
+                        }
+
+                        linhaMatriz++;
+                    }
+                }
+
+                sc.close();
+
+                // MENU PRINCIPAL
+                System.out.println("\n===== MENU PRINCIPAL =====");
+                System.out.println("1 - Pesquisas");
+                System.out.println("2 - Criar Formando");
+                System.out.println("3 - Editar Formando");
+                System.out.println("4 - Eliminar Formando");
+                System.out.println("0 - Sair");
+
+                System.out.print("Escolha uma opção: ");
+                opcao = input.nextInt();
+                input.nextLine();
+
+                switch (opcao) {
+
+                    // PESQUISAS
+                    case 1:
+
+
+
+
+
+                    // CRIAR FORMANDO
+                    case 2:
+
+
+
+                        break;
+
+                    // EDITAR FORMANDO
+                    case 3:
+
+
+
+                        break;
+
+                    // ELIMINAR FORMANDO
+                    case 4:
+
+
+                        break;
+
+                    case 0:
+                        System.out.println("Programa terminado!");
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida!");
+                }
+
+            } while (opcao != 0);
+
         } catch (Exception e) {
-            throw new RuntimeException(e);
+
+            System.out.println("Erro: " + e.getMessage());
         }
+
+        input.close();
     }
 }
