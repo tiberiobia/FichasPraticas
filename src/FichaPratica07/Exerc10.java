@@ -23,126 +23,79 @@ import java.util.Scanner;
 //        e. Eliminar Formando
 //i. Dado um número de matrícula, permita eliminar as informações do formando.
 
-
-import java.io.File;
-import java.io.FileWriter;
-import java.util.Scanner;
+import static FichaPratica07.Exerc10Funcoes.*;
 
 public class Exerc10 {
 
     public static void main(String[] args) {
-
-        File ficheiro = new File("Files/exercicio_10.csv");
-
         Scanner input = new Scanner(System.in);
 
-        try {
+        String caminhoFicheiro = "Files/exercicio_10.csv";
 
-            int opcao = -1;
-
-            do {
-
-                // Contar linhas do ficheiro
-                int totallinhas = 0;
-
-                Scanner leitor = new Scanner(ficheiro);
-
-                leitor.nextLine(); // Ignorar cabeçalho
-
-                while (leitor.hasNextLine()) {
-
-                    String linha = leitor.nextLine().trim();
-
-                    if (!linha.isEmpty()) {
-                        totallinhas++;
-                    }
-                }
-
-                leitor.close();
+        String[][] matriz = lerFicheiroParaMatriz(caminhoFicheiro);
+        int opcao = -1;
+        do {
 
 
-                String[][] matriz = new String[totallinhas][5];
+            // MENU PRINCIPAL
+            System.out.println("\n===== MENU PRINCIPAL =====");
+            System.out.println("1 - Pesquisas");
+            System.out.println("2 - Criar Formando");
+            System.out.println("3 - Editar Formando");
+            System.out.println("4 - Eliminar Formando");
+            System.out.println("0 - Sair");
 
-                Scanner sc = new Scanner(ficheiro);
+            System.out.print("Escolha uma opção: ");
+            opcao = input.nextInt();
+            input.nextLine();
 
-                sc.nextLine();
+            switch (opcao) {
 
-                int linhaMatriz = 0;
+                // PESQUISAS
+                case 1:
 
-                while (sc.hasNextLine()) {
+                    //função menu pesquisa- vai chamar outras funçoes
+                    menuPesquisa(matriz);
 
-                    String linha = sc.nextLine().trim();
+                    break;
 
-                    if (!linha.isEmpty()) {
-
-                        String[] info = linha.split(",", -1);
-
-                        for (int i = 0; i < 5; i++) {
-                            matriz[linhaMatriz][i] = info[i].trim();
-                        }
-
-                        linhaMatriz++;
-                    }
-                }
-
-                sc.close();
-
-                // MENU PRINCIPAL
-                System.out.println("\n===== MENU PRINCIPAL =====");
-                System.out.println("1 - Pesquisas");
-                System.out.println("2 - Criar Formando");
-                System.out.println("3 - Editar Formando");
-                System.out.println("4 - Eliminar Formando");
-                System.out.println("0 - Sair");
-
-                System.out.print("Escolha uma opção: ");
-                opcao = input.nextInt();
-                input.nextLine();
-
-                switch (opcao) {
-
-                    // PESQUISAS
-                    case 1:
+                // CRIAR FORMANDO
+                case 2:
+                    //função que add linha ao ficheiro
 
 
+                    break;
 
+                // EDITAR FORMANDO
+                case 3:
 
+                    //função que modifica linha do ficheiro
 
-                    // CRIAR FORMANDO
-                    case 2:
+                    break;
 
+                // ELIMINAR FORMANDO
+                case 4:
 
+                    //função que exclui linha do ficheiro
+                    break;
 
-                        break;
+                case 0:
+                    System.out.println("Programa terminado!");
+                    break;
 
-                    // EDITAR FORMANDO
-                    case 3:
+                default:
+                    System.out.println("Opção inválida!");
+            }
 
-
-
-                        break;
-
-                    // ELIMINAR FORMANDO
-                    case 4:
-
-
-                        break;
-
-                    case 0:
-                        System.out.println("Programa terminado!");
-                        break;
-
-                    default:
-                        System.out.println("Opção inválida!");
-                }
-
-            } while (opcao != 0);
-
-        } catch (Exception e) {
-
-            System.out.println("Erro: " + e.getMessage());
-        }
-
+        } while (opcao != 0);
         input.close();
+    } catch(Exception e){
+
+        System.out.println("Erro: " + e.getMessage());
     }
+
+
 }
+
+
+
