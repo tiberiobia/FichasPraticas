@@ -28,70 +28,76 @@ import static FichaPratica07.Exerc10Funcoes.*;
 public class Exerc10 {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
 
-        String caminhoFicheiro = "Files/exercicio_10.csv";
+        try {
+            Scanner input = new Scanner(System.in);
 
-        String[][] matriz = lerFicheiroParaMatriz(caminhoFicheiro);
-        int opcao = -1;
-        do {
+            String caminhoFicheiro = "Files/exercicio_10.csv";
 
-
-            // MENU PRINCIPAL
-            System.out.println("\n===== MENU PRINCIPAL =====");
-            System.out.println("1 - Pesquisas");
-            System.out.println("2 - Criar Formando");
-            System.out.println("3 - Editar Formando");
-            System.out.println("4 - Eliminar Formando");
-            System.out.println("0 - Sair");
-
-            System.out.print("Escolha uma opção: ");
-            opcao = input.nextInt();
-            input.nextLine();
-
-            switch (opcao) {
-
-                // PESQUISAS
-                case 1:
-
-                    //função menu pesquisa- vai chamar outras funçoes
-                    menuPesquisa(matriz);
-
-                    break;
-
-                // CRIAR FORMANDO
-                case 2:
-                    //função que add linha ao ficheiro
+            String[][] matriz = lerFicheiroParaMatriz(caminhoFicheiro);
+            int opcao = -1;
+            do {
 
 
-                    break;
+                // MENU PRINCIPAL
+                System.out.println("\n===== MENU PRINCIPAL =====");
+                System.out.println("1 - Pesquisas");
+                System.out.println("2 - Criar Formando");
+                System.out.println("3 - Editar Formando");
+                System.out.println("4 - Eliminar Formando");
+                System.out.println("0 - Sair");
 
-                // EDITAR FORMANDO
-                case 3:
+                System.out.print("Escolha uma opção: ");
+                opcao = input.nextInt();
+                input.nextLine();
 
-                    //função que modifica linha do ficheiro
+                switch (opcao) {
 
-                    break;
+                    // PESQUISAS
+                    case 1:
 
-                // ELIMINAR FORMANDO
-                case 4:
+                        //função menu pesquisa- vai chamar outras funçoes
+                        menuPesquisa(matriz);
 
-                    //função que exclui linha do ficheiro
-                    break;
+                        break;
 
-                case 0:
-                    System.out.println("Programa terminado!");
-                    break;
+                    // CRIAR FORMANDO
+                    case 2:
+                        //função que add linha ao ficheiro
+                        matriz=criarFormandos(matriz,caminhoFicheiro);
 
-                default:
-                    System.out.println("Opção inválida!");
-            }
+                        break;
 
-        } while (opcao != 0);
-        input.close();
-    } catch(Exception e){
+                    // EDITAR FORMANDO
+                    case 3:
 
-        System.out.println("Erro: " + e.getMessage());
+                        //função que modifica linha do ficheiro
+                        editarFormando(matriz,caminhoFicheiro);
+
+                        break;
+
+                    // ELIMINAR FORMANDO
+                    case 4:
+
+                        //função que exclui linhas do ficheiro
+                        matriz=eliminarFormando(matriz,caminhoFicheiro);
+
+                        break;
+
+                    case 0:
+                        System.out.println("Programa terminado!");
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida!");
+                }
+
+            } while (opcao != 0);
+            input.close();
+        } catch (Exception e) {
+
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
 
 
