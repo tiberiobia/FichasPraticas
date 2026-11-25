@@ -62,7 +62,7 @@ public class Exerc09 {
             int opcao;
 
             do {
-                System.out.println("---Menu---");
+                System.out.println("---------Menu----------");
                 System.out.println("1. Pesquisar por género");
                 System.out.println("2. Pesquisar por artista");
                 System.out.println("3. Música com maior duração");

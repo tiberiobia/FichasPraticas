@@ -21,7 +21,7 @@ public class Exerc07 {
 
                 String linhaLimpa = linhaAtual.trim();
                 if (!linhaLimpa.isEmpty()) {
-                    String[] palavras = linhaLimpa.split("\\s+");
+                    String[] palavras = linhaLimpa.split(" ");
                     totalPalavras += palavras.length;
                 }
 
